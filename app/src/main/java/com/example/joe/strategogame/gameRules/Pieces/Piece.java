@@ -1,10 +1,11 @@
-package com.example.joe.strategogame.gameRules;
+package com.example.joe.strategogame.gameRules.Pieces;
 
 public class Piece {
-    private int rank;
-    private int teamID;
-    private int pieceID;
+    protected int rank;
+    protected int teamID;
+    protected int pieceID;
     protected int position;
+    protected int range;
 
     public Piece(int rank, int team, int pieceID, int position)
     {
@@ -12,6 +13,10 @@ public class Piece {
         this.teamID = team;
         this.pieceID = pieceID;
         this.position = position;
+        this.range = 1;
+    }
+    public Piece()
+    {
     }
 
     public int getRank()
@@ -39,9 +44,13 @@ public class Piece {
         position = destination;
     }
 
-    public boolean canDefeatPiece(int otherPieceRank)
+    public boolean killsDefendingPiece(int otherPieceRank)
     {
-        return rank > otherPieceRank;
+        return rank >= otherPieceRank;
     }
 
+    public boolean isKilledByDefendingPiece(int otherPieceRank)
+    {
+        return rank <= otherPieceRank || otherPieceRank == RankConstants.BOMB;
+    }
 }
