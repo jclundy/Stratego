@@ -4,29 +4,28 @@ public class Piece {
     protected int rank;
     protected int teamID;
     protected int pieceID;
-    protected int position;
     protected int range;
 
-    public Piece(int rank, int team, int pieceID, int position)
+    public Piece(int rank, int team, int pieceNumber)
     {
         this.rank = rank;
         this.teamID = team;
-        this.pieceID = pieceID;
-        this.position = position;
+        this.pieceID = pieceNumber;
         this.range = 1;
     }
+
     public Piece()
     {
+    }
+
+    public Piece copyPiece(int id)
+    {
+        return new Piece(rank, teamID, id);
     }
 
     public int getRank()
     {
         return rank;
-    }
-
-    public int getPosition()
-    {
-        return position;
     }
 
     public int getPieceID()
@@ -37,11 +36,6 @@ public class Piece {
     public int getTeamID()
     {
         return teamID;
-    }
-
-    public void setPosition(int destination)
-    {
-        position = destination;
     }
 
     public boolean killsDefendingPiece(int otherPieceRank)

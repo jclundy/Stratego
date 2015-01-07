@@ -12,4 +12,7 @@ public class PieceCountConstants {
     public static int COLONEL = 2;
     public static int GENERAL = 1;
     public static int MARSHALL = 1;
+
+    public static int [] pieceCounts = {FLAG, BOMB, SCOUT, MINER, SERGEANT, LIEUTENANT,
+                                        CAPTAIN, MAJOR, COLONEL, GENERAL, MARSHALL};
 }

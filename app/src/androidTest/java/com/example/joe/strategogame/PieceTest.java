@@ -15,7 +15,7 @@ public class PieceTest extends ApplicationTestCase<Application>
 
     public void testPiece()
     {
-        Piece captain = new Piece(RankConstants.CAPTAIN, 1, 2, 0);
+        Piece captain = new Piece(RankConstants.CAPTAIN, 1, 2);
         assertTrue(captain.killsDefendingPiece(RankConstants.CAPTAIN));
         assertTrue(captain.isKilledByDefendingPiece(RankConstants.CAPTAIN));
         assertTrue(captain.isKilledByDefendingPiece(RankConstants.MARSHALL));
@@ -26,6 +26,5 @@ public class PieceTest extends ApplicationTestCase<Application>
 
     public void testMiner()
     {
-        Piece miner = new Miner();
     }
 }
