@@ -7,10 +7,7 @@ public class Scout extends Piece
 {
     public Scout(int rank, int team, int pieceID, int position)
     {
-        this.rank = rank;
-        this.teamID = team;
-        this.pieceID = pieceID;
-        this.position = position;
+        super(rank, team, pieceID, position);
         this.range = 10;
     }
 }

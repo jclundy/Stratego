@@ -16,18 +16,4 @@ public class RankConstants {
     public static int COLONEL = 9;
     public static int GENERAL = 10;
     public static int MARSHALL = 11;
-    /*
-    Flag (1x)
-Bomb (6x)
-Spy (1x)
-Scout (8x)
-Miner (5x)
-Sergeant (4x)
-Lieutenant (4x)
-Captain (4x)
-Major (3x)
-Colonel (2x)
-General (1x)
-Marshall (1x)
-     */
 }
