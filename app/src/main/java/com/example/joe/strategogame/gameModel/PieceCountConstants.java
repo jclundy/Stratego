@@ -1,4 +1,4 @@
-package com.example.joe.strategogame.gameRules;
+package com.example.joe.strategogame.gameModel;
 
 public class PieceCountConstants {
     public static int FLAG = 1;

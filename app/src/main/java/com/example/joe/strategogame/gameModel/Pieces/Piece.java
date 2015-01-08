@@ -1,4 +1,4 @@
-package com.example.joe.strategogame.gameRules.Pieces;
+package com.example.joe.strategogame.gameModel.Pieces;
 
 public class Piece {
     protected int rank;
