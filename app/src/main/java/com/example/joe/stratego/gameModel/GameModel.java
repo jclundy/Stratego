@@ -36,7 +36,7 @@ public class GameModel
     {
         if(!isMoveValid())
             return false;
-        if(willMoveResultInBattle())
+        if(moveWillResultInBattle())
             resolveBattle();
         else
             updatePiecePosition(fromSquare, toSquare);
@@ -58,7 +58,7 @@ public class GameModel
 
     }
 
-    private boolean willMoveResultInBattle()
+    private boolean moveWillResultInBattle()
     {
         return false;
     }
