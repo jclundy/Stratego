@@ -1,7 +1,7 @@
-package com.example.joe.strategogame.gameModel;
+package com.example.joe.stratego.gameModel;
 
-import com.example.joe.strategogame.gameModel.Pieces.Piece;
-import com.example.joe.strategogame.gameModel.Pieces.RankConstants;
+import com.example.joe.stratego.gameModel.Pieces.Piece;
+import com.example.joe.stratego.gameModel.Pieces.RankConstants;
 
 import java.util.ArrayList;
 

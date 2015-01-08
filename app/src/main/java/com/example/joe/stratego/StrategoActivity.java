@@ -1,4 +1,4 @@
-package com.example.joe.strategogame;
+package com.example.joe.stratego;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;

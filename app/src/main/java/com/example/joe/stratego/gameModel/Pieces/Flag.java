@@ -1,4 +1,4 @@
-package com.example.joe.strategogame.gameModel.Pieces;
+package com.example.joe.stratego.gameModel.Pieces;
 
 /**
  * Created by joe on 2015-01-05.

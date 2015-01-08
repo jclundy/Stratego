@@ -1,5 +1,5 @@
-package com.example.joe.strategogame;
-import com.example.joe.strategogame.gameRules.Pieces.*;
+package com.example.joe.stratego;
+import com.example.joe.stratego.gameModel.Pieces.*;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
