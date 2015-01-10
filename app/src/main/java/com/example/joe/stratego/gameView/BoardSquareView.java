@@ -1,6 +1,8 @@
 package com.example.joe.stratego.gameView;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.widget.ImageView;
@@ -24,6 +26,18 @@ public class BoardSquareView extends ImageView {
         ySize = this.getHeight();
         backgroundImageID = resourceID;
         drawDefaultBackground();
+    }
+
+    public void highlightPiece(int color)
+    {
+       Drawable highlight = new ColorDrawable(color);
+       highlight.setAlpha(100);
+       drawSelection(highlight);
+    }
+
+    public void unhighlightPiece()
+    {
+        drawBackground();
     }
 
     public void setPiece(int resourceID)
@@ -62,11 +76,11 @@ public class BoardSquareView extends ImageView {
         setImageDrawable(background);
     }
 
-    private void drawSelection(int overlayImageID)
+    private void drawSelection(Drawable overlay)
     {
         Drawable[] layers = new Drawable[2];
         layers[0] = background;
-        layers[1] = getResources().getDrawable(overlayImageID);
+        layers[1] = overlay;
         LayerDrawable layerDrawable = new LayerDrawable(layers);
         setImageDrawable(layerDrawable);
     }

@@ -1,22 +1,42 @@
 package com.example.joe.stratego;
 
-import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.joe.stratego.gameView.BoardView;
 
 public class StrategoActivity extends ActionBarActivity {
 
+    private BoardView boardView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stratego);
-        BoardView boardView = (BoardView) findViewById(R.id.boardView);
+        boardView = (BoardView) findViewById(R.id.boardView);
         boardView.createSquares();
+        boardView.setOnTouchListener(boardViewListener());
+    }
+
+    private View.OnTouchListener boardViewListener() {
+        return new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+                int action = event.getAction();
+                if(action == MotionEvent.ACTION_DOWN)
+                {
+                    int position = boardView.getPosition(x, y);
+                    boardView.selectSquare(position);
+                    return true;
+                }
+                return false;
+            }
+        };
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.joe.stratego.gameView;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -9,12 +10,15 @@ import com.example.joe.stratego.R;
 import com.example.joe.stratego.Util;
 
 public class BoardView extends ViewGroup {
+    private final int numRow = 10;
+    private final int numCol = 10;
+
     private Context context;
     private int parentWidth;
     private int parentHeight;
     private int squareSize;
-    private int numRow;
-    private int numCol;
+    private int firstHighlightedSquare;
+    private int secondHighlightedSquare;
 
     public BoardView(Context context)
     {
@@ -45,6 +49,9 @@ public class BoardView extends ViewGroup {
             BoardSquareView square = new BoardSquareView(getContext(), i, resourceID);
             this.addView(square);
         }
+
+        firstHighlightedSquare = -1;
+        secondHighlightedSquare = -1;
     }
 
     private int getResourceID(int number)
@@ -61,12 +68,42 @@ public class BoardView extends ViewGroup {
         return R.drawable.terrain_tile;
     }
 
+    public void selectSquare(int number)
+    {
+        if(firstHighlightedSquare == -1) {
+            firstHighlightedSquare = number;
+            highlightSquare(number, Color.BLUE);
+        } else if (secondHighlightedSquare == -1 && number != firstHighlightedSquare){
+            secondHighlightedSquare = number;
+            highlightSquare(number, Color.RED);
+        } else {
+            unhighlightSquare(firstHighlightedSquare);
+            unhighlightSquare(secondHighlightedSquare);
+            firstHighlightedSquare = -1;
+            secondHighlightedSquare = -1;
+        }
+    }
+
+    private void highlightSquare(int number, int color)
+    {
+        BoardSquareView squareImage = (BoardSquareView) getChildAt(number);
+        squareImage.highlightPiece(color);
+    }
+
+    private void unhighlightSquare(int number)
+    {
+        if(number >= 0 && number < 99) {
+            BoardSquareView squareImage = (BoardSquareView) getChildAt(number);
+            squareImage.unhighlightPiece();
+        }
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = this.getResources().getDisplayMetrics().widthPixels;
         int height = this.getResources().getDisplayMetrics().heightPixels;
 
-        int finalDimension = Math.max(width, height);
+        int finalDimension = Math.min(width, height);
         this.setMeasuredDimension(finalDimension, finalDimension);
     }
 
@@ -82,5 +119,20 @@ public class BoardView extends ViewGroup {
             int bottom = top + squareSize;
             squareImage.layout(left, top, right, bottom);
         }
+    }
+
+    public int getRow(int y) {
+        return (int) Math.ceil(y / squareSize);
+    }
+
+    public int getColumn(int x) {
+        return (int) Math.ceil( x / squareSize);
+    }
+
+    public int getPosition(int x, int y)
+    {
+        int row = getRow(y);
+        int col = getColumn(x);
+        return  col + row * numCol;
     }
 }
