@@ -6,7 +6,8 @@ import android.graphics.drawable.LayerDrawable;
 import android.widget.ImageView;
 
 public class BoardSquareView extends ImageView {
-    private int number;
+    int col;
+    int row;
     private int xSize;
     private int ySize;
     private Context context;
@@ -14,14 +15,15 @@ public class BoardSquareView extends ImageView {
     private int pieceImageID;
     private int backgroundImageID;
 
-    public BoardSquareView(Context context, int number, int resourceID) {
+    public BoardSquareView(Context context, int col, int row, int resourceID) {
         super(context);
         this.context = context;
-        this.number = number;
+        this.col = col;
+        this.row = row;
         xSize = this.getWidth();
         ySize = this.getHeight();
         backgroundImageID = resourceID;
-        drawBackground();
+        drawDefaultBackground();
     }
 
     public void setPiece(int resourceID)
@@ -50,7 +52,8 @@ public class BoardSquareView extends ImageView {
 
     private void drawDefaultBackground()
     {
-        background = getResources().getDrawable(backgroundImageID);
+        Drawable backgroundImg = getResources().getDrawable(backgroundImageID);
+        background = backgroundImg;
         setImageDrawable(background);
     }
 
@@ -67,5 +70,4 @@ public class BoardSquareView extends ImageView {
         LayerDrawable layerDrawable = new LayerDrawable(layers);
         setImageDrawable(layerDrawable);
     }
-
 }

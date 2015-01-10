@@ -1,10 +1,13 @@
 package com.example.joe.stratego;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.joe.stratego.gameView.BoardView;
 
 public class StrategoActivity extends ActionBarActivity {
 
@@ -12,8 +15,9 @@ public class StrategoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stratego);
+        BoardView boardView = (BoardView) findViewById(R.id.boardView);
+        boardView.createSquares(50);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
