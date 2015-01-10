@@ -32,9 +32,14 @@ public class BoardView extends ViewGroup {
         this.context = context;
     }
 
-    public void createSquares(int squareSize)
+    public void createSquares()
     {
-        this.squareSize = squareSize;
+        int width = this.getResources().getDisplayMetrics().widthPixels;
+        int height = this.getResources().getDisplayMetrics().heightPixels;
+
+        int finalDimension = Math.min(width, height);
+
+        this.squareSize = finalDimension / 10;
         for (int i= 0; i < 100; i ++) {
             int resourceID = getResourceID(i);
             BoardSquareView square = new BoardSquareView(getContext(), i, resourceID);
@@ -58,10 +63,11 @@ public class BoardView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        parentWidth  = MeasureSpec.getSize(widthMeasureSpec) ;
-        parentHeight = MeasureSpec.getSize(heightMeasureSpec) ;
+        int width = this.getResources().getDisplayMetrics().widthPixels;
+        int height = this.getResources().getDisplayMetrics().heightPixels;
 
-        this.setMeasuredDimension(parentWidth, parentHeight);
+        int finalDimension = Math.max(width, height);
+        this.setMeasuredDimension(finalDimension, finalDimension);
     }
 
     @Override
