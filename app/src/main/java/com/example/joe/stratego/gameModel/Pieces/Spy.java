@@ -4,7 +4,7 @@ public class Spy extends Piece
 {
     public Spy(int rank, int team, int pieceID, int position)
     {
-        super(rank, team, pieceID, position);
+        super(rank, team, pieceID);
     }
 
     public boolean killsDefendingPiece(int otherPieceRank)

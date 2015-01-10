@@ -7,7 +7,7 @@ public class Scout extends Piece
 {
     public Scout(int rank, int team, int pieceID, int position)
     {
-        super(rank, team, pieceID, position);
+        super(rank, team, pieceID);
         this.range = 10;
     }
 }

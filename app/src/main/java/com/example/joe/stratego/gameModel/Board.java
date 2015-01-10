@@ -2,9 +2,6 @@ package com.example.joe.stratego.gameModel;
 
 import com.example.joe.stratego.gameModel.Pieces.Piece;
 
-/**
- * Created by joe on 2015-01-05.
- */
 public class Board {
     protected Square [] squares;
 
