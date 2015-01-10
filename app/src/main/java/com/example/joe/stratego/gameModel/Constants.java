@@ -9,3 +9,4 @@ public class Constants {
 
     public static int[] lakeSquares = {42, 43, 52, 53, 46, 47, 56, 57};
 }
+

@@ -2,9 +2,11 @@ package com.example.joe.stratego.gameView;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.example.joe.stratego.R;
+import com.example.joe.stratego.Util;
 
 public class BoardView extends ViewGroup {
     private Context context;
@@ -33,14 +35,25 @@ public class BoardView extends ViewGroup {
     public void createSquares(int squareSize)
     {
         this.squareSize = squareSize;
-        numRow = 10;
-        numCol = 10;
-        for (int col = 0; col < 10; col ++) {
-            for (int row = 0; row < 10; row++){
-                BoardSquareView square = new BoardSquareView(getContext(), col, row, R.drawable.terrain_tile);
-                this.addView(square);
-            }
+        for (int i= 0; i < 100; i ++) {
+            int resourceID = getResourceID(i);
+            BoardSquareView square = new BoardSquareView(getContext(), i, resourceID);
+            this.addView(square);
         }
+    }
+
+    private int getResourceID(int number)
+    {
+        if(Util.equals(number, 52, 56) )
+            return R.drawable.lake_bottom_left;
+        if(Util.equals(number, 53, 57))
+            return R.drawable.lake_bottom_right;
+        if(Util.equals(number, 42, 46))
+            return R.drawable.lake_top_left;
+        if(Util.equals(number, 43, 47))
+            return R.drawable.lake_top_right;
+
+        return R.drawable.terrain_tile;
     }
 
     @Override

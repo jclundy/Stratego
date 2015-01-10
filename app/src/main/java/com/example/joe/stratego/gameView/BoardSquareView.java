@@ -15,11 +15,11 @@ public class BoardSquareView extends ImageView {
     private int pieceImageID;
     private int backgroundImageID;
 
-    public BoardSquareView(Context context, int col, int row, int resourceID) {
+    public BoardSquareView(Context context, int i, int resourceID) {
         super(context);
         this.context = context;
-        this.col = col;
-        this.row = row;
+        this.row = i / 10;
+        this.col = i % 10;
         xSize = this.getWidth();
         ySize = this.getHeight();
         backgroundImageID = resourceID;

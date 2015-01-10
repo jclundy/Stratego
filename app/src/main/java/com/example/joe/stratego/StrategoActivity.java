@@ -1,9 +1,7 @@
 package com.example.joe.stratego;
 
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,7 +14,7 @@ public class StrategoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stratego);
         BoardView boardView = (BoardView) findViewById(R.id.boardView);
-        boardView.createSquares(50);
+        boardView.createSquares();
     }
 
     @Override
